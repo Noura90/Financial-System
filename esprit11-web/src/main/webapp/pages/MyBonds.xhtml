@@ -1,0 +1,240 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+
+
+<ui:composition template="template3Admin.xhtml">
+
+
+	<ui:define name="title">
+             My Bonds
+             </ui:define>
+	<ui:define name="minititle">
+		<h5>List of My Bonds</h5>
+	</ui:define>
+	<ui:define name="title4">
+            My Bonds
+             </ui:define>
+
+
+	<ui:define name="content1">
+
+		<div class="row">
+
+			<h:form id="registrationForm" rendered="#{MyBondsController.display}">
+				<div class="col-xs-12">
+					<div class="widget-box">
+						<div class="widget-title">
+							<span class="icon"> <i class="fa fa-th-list"></i>
+							</span>
+							<h5>Modify a Bond</h5>
+
+						</div>
+						<div class="widget-content">
+
+
+							<div class="panel panel-default">
+								<div class="panel-heading">
+									<h3 class="panel-title">Modify a Bond</h3>
+								</div>
+								<div class="panel-body">
+
+									<fieldset>
+										
+										<div class="form-group">
+											<h:outputText value="Bond Type" />
+											<h:message for="lastNameField" styleClass="form-error" />
+											<h:inputText id="lastNameField" class="form-control"
+												value="#{MyBondsController.bond.typeBond}">
+											</h:inputText>
+											
+											
+										</div>
+
+
+										<div class="form-group">
+											<h:outputText value="Capitals Number" />
+											<h:message for="eMailField" styleClass="form-error" />
+											<h:inputText id="eMailField" class="form-control"
+												value="#{MyBondsController.bond.nombreCapital}">
+											</h:inputText>
+										</div>
+
+										<div class="form-group">
+											<h:outputText value="Description" />
+											<h:message for="DescField" styleClass="form-error" />
+											<h:inputText id="DescField" class="form-control"
+												value="#{MyBondsController.bond.description}">
+											</h:inputText>
+										</div>
+										<div class="form-group">
+											<h:outputText value="Type of delevery" />
+											<h:message for="DelvField" styleClass="form-error" />
+											<h:inputText id="DelvField" class="form-control"
+												value="#{MyBondsController.bond.deleveryType}">
+											</h:inputText>
+											
+											
+											
+											
+										</div>
+										<div class="form-group">
+											
+										</div>
+										
+										
+										
+										<h:commandButton class="btn btn-danger btn-block btn-lg"
+											value="Update" type="submit"
+											action="#{MyBondsController.doUpdateService()}" />
+										<h:commandButton class="btn btn-inverse btn-block"
+											type="submit" value="Cancel"
+											action="#{MyBondsController.doCancelUpdateService()}" />
+									</fieldset>
+								</div>
+							</div>
+
+
+						</div>
+					</div>
+				</div>
+			</h:form>
+		</div>
+
+
+
+
+
+		<h:form>
+			<a class="btn btn-inverse" href="AddBond.xhtml"> <i
+				class="fa fa-plus-circle"></i> Add A Bond
+			</a>
+			<br></br>
+			<h:dataTable id="dataTables-example_wrapper"
+				class="table table-bordered table-striped table-hover data-table"
+				value="#{MyBondsController.bonds}"
+				rowClasses="gradeA odd, gradeA even" var="bond">
+				<h:column>
+					<f:facet name="header">
+								Bond Image
+								</f:facet>
+					<img src="../resources/UploadedImages/#{bond.imageLink}"
+						width="100" height="100"></img>
+					<!-- <a href="../resources/UploadedImages/#{service.imageLink}">Full Size</a>
+										 -->
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+								Bond Type
+								</f:facet>
+					<h:outputText value="#{bond.typeBond}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+								Capitals
+								</f:facet>
+					<h:outputText value="#{bond.nombreCapital}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+								Description
+								</f:facet>
+					<h:outputText value="#{bond.description}" />
+				</h:column>
+
+				<h:column>
+					<f:facet name="header">
+								Type of delevery
+					</f:facet>
+					<h:outputText value="#{bond.deleveryType}" />
+					
+				</h:column>
+				
+				<!--  
+				<h:column>
+					            <f:facet name="header">
+								State Of bond
+								</f:facet>
+					            <h:outputText value="#{bond.stateBond}" />
+				</h:column>
+				
+				-->
+				
+				
+				<h:column>
+					<f:facet name="header">
+								Actions
+							</f:facet>
+					<h:commandLink value="Update" class="btn btn-inverse"
+						data-toggle="modal">
+						<i class="fa fa-edit"></i>
+						<f:setPropertyActionListener target="#{MyBondsController.bond}"
+							value="#{bond}" />
+						<f:setPropertyActionListener target="#{MyBondsController.display}"
+							value="true" />
+					</h:commandLink>
+					<!--   <a class="btn btn-inverse" data-toggle="modal" href="#new-mail">
+													 <i class="fa fa-pencil"></i> Update</a>  -->
+
+					<h:commandLink class="btn btn-inverse"
+						action="#{MyBondsController.doDeleteService()}" value="Delete">
+						<i class="fa fa-trash-o"></i>
+
+						<f:setPropertyActionListener target="#{MyBondsController.bond}"
+							value="#{bond}" />
+
+
+
+					</h:commandLink>
+				</h:column>
+			</h:dataTable>
+		</h:form>
+
+
+ <h:form id="jsfexample">
+      
+        <p:dataTable value="#{manager.returnCacheListMyBonds()}" var="item" id="mydata" rendered="false">
+            <p:column>
+                <f:facet name="header">Type Bond</f:facet>
+                <h:outputText value="#{item.typeBond}" />
+            </p:column>
+            <p:column>
+                <f:facet name="header">Description</f:facet>
+                <h:outputText value="#{item.description}" />
+            </p:column>
+            <p:column>
+                <f:facet name="header">Capitals Number</f:facet>
+                <h:outputText value="#{item.nombreCapital}" />
+            </p:column>
+           
+        </p:dataTable>
+        <p:panel >
+            <h:commandLink>
+                <p:graphicImage value="../resources/img/excel_icon.png"  width="100" height="100"/>
+                <p:dataExporter type="xls" postProcessor="#{manager.postProcessXLS}"
+                    target="mydata" fileName="myexcel" />
+            </h:commandLink>
+            <h:commandLink>
+                <p:graphicImage value="../resources/img/NoP_PDF_downlaod.png"  width="100" height="100"/>
+                <p:dataExporter type="pdf" target="mydata" fileName="mypdf" />
+            </h:commandLink>
+        </p:panel>
+
+    </h:form>
+
+
+
+
+
+
+	</ui:define>
+
+</ui:composition>
+
+
+</html>

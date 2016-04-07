@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<h:head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Unicorn Admin</title>
+
+
+	<link rel="stylesheet" href="../resources/css/bootstrap.min.css" />
+	<link rel="stylesheet" href="../resources/css/font-awesome.css" />
+	<link rel="stylesheet" href="../resources/css/unicorn-login.css" />
+	<script type="text/javascript" src="../resources/js/respond.min.js"></script>
+</h:head>
+
+<body>
+	<div class="container">
+		<div id="logo">
+			<img src="../resources/img/LoginLogo.png" alt="" />
+		</div>
+		<div id="user">
+			<div class="avatar">
+				<div class="inner"></div>
+				<img src="../resources/img/demo/av1_1.jpg" />
+			</div>
+			<div class="text">
+				<h4>
+					Hello,<span class="user_name"></span>
+				</h4>
+			</div>
+		</div>
+
+
+
+		<div class="loginbox">
+			<div class="col-md-4 col-md-offset-4">
+				<div class="login-panel panel panel-default">
+					<h:form id="loginform">
+						<div class="loginbox">
+						<span class="input-group-addon">Entrer votre mail et mot de passe .</span>
+							
+						</div>
+					</h:form>
+					<h:form id="formLogin">
+						<div class="panel-body">
+							<fieldset>
+								<div class="form-group">
+  										<span class="input-group-addon"><i class="fa fa-user"></i></span>
+									<h:inputText  class="form-control" placeholder="E-mail" 
+										value="#{authenticationController.customer.email_user}" />
+								</div>
+								<div class="form-group">
+								   <span class="input-group-addon"><i class="fa fa-lock"></i></span>
+									<h:inputSecret class="form-control"  placeholder="Password" 
+										value="#{authenticationController.customer.password_user}" />
+								</div>
+								<div class="form-actions clearfix">
+									<div class="pull-left">
+										<a href="registration2.xhtml" class="flip-link to-register blue">
+										Créer un compte</a>
+									</div>
+									<div class="pull-right">
+										<a href="LostPassword.xhtml" class="flip-link to-recover grey">
+										mot de passe oublié ?</a>
+									</div>
+								<h:commandButton type="submit"
+										styleClass="btn btn-block btn-primary btn-default"
+										id="authFormCommand" value="S'identifier"
+										action="#{authenticationController.doLogIn()}" />
+
+								</div>
+								<div class="footer-login">
+									<div class="pull-left text">Connectez avec</div>
+									<div class="pull-right btn-social">
+										<a class="btn btn-facebook" href="#"><i
+											class="fa fa-facebook"></i></a> <a class="btn btn-twitter"
+											href="#"><i class="fa fa-twitter"></i></a> <a
+											class="btn btn-google-plus" href="#"><i
+											class="fa fa-google-plus"></i></a>
+									</div>
+								</div>
+							</fieldset>
+							<br />
+							<h:messages layout="table" styleClass="form-error"
+								showDetail="true" />
+						</div>
+					</h:form>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+
+</html>

@@ -1,0 +1,170 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+    <h:body>
+        <ui:composition template="template3.xhtml">
+
+             <ui:define name="title">
+             List of All Shares
+             </ui:define>
+             <ui:define name="minititle">
+             <h5>List of All Shares</h5>
+             </ui:define>
+             <ui:define name="title4">
+             All Shares
+             </ui:define>
+
+
+            <ui:define name="content1">
+            
+        <div class="row">
+        
+        <h:form id="registrationForm"
+						rendered="#{ShareController.display}">
+					<div class="col-xs-12" >
+						<div class="widget-box">
+							<div class="widget-title">
+								<span class="icon">
+									<i class="fa fa-th-list"></i>
+								</span>
+								<h5>Modify a Share</h5>
+							</div>
+							<div class="widget-content">
+							
+
+						<div class="panel panel-default">
+							<div class="panel-heading">
+								<h3 class="panel-title">Modify a Share</h3>
+							</div>
+							<div class="panel-body">
+
+								<fieldset>
+									<div class="form-group">
+										<h:outputText value="Share ID" />
+										<h:message for="firstNameField" styleClass="form-error" />
+										<h:inputText id="firstNameField" class="form-control"
+											value="#{ShareController.share.idShare}">
+										</h:inputText>
+									</div>
+									<div class="form-group">
+										<h:outputText value="Share Type" />
+										<h:message for="lastNameField" styleClass="form-error" />
+										<h:inputText id="lastNameField" class="form-control"
+											required="true" requiredMessage=" is mendatory"
+											validatorMessage=" is alphabetical field"
+											value="#{ShareController.share.typeShare}">
+											<f:validateRegex pattern="[a-z A-Z]*" for="lastNameField" />
+										</h:inputText>
+									</div>
+
+
+									<div class="form-group">
+										<h:outputText value="Capitals Number" />
+										<h:message for="eMailField" styleClass="form-error" />
+										<h:inputText id="eMailField" class="form-control"
+											required="false" requiredMessage=" is mendatory"
+											validatorMessage=" must be well formed"
+											value="#{ShareController.share.nbrCapital}">
+											<f:validateRegex
+												pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$"
+												for="eMailField" />
+										</h:inputText>
+									</div>
+									<h:commandButton class="btn btn-danger btn-block btn-lg"
+										value="Update" type="submit"
+										action="#{ShareController.doUpdateShare()}" />
+									<h:commandButton class="btn btn-inverse btn-block"
+										value="Cancel"
+										action="#{ShareController.doCancelUpdateShare()}" />
+								</fieldset>
+							</div>
+						</div>
+
+				
+							</div>
+						</div>
+					</div>
+					</h:form>
+				</div>
+             	
+            
+        
+            
+            <br></br>
+            <h:form >
+<h:dataTable id="dataTables-example_wrapper"
+										class="table table-bordered table-striped table-hover data-table"
+										value="#{ShareController.shares}"
+										rowClasses="gradeA odd, gradeA even" var="share">
+										<h:column>
+											<f:facet name="header">
+								Share ID
+								</f:facet>
+											<h:outputText value="#{share.idShare}" />
+										</h:column>
+										<h:column>
+											<f:facet name="header">
+								Share Type
+								</f:facet>
+											<h:outputText value="#{share.typeShare}" />
+										</h:column>
+										<h:column>
+											<f:facet name="header">
+								Capitals
+								</f:facet>
+											<h:outputText value="#{share.nbrCapital}" />
+										</h:column>
+										
+										
+									</h:dataTable>
+									</h:form>
+									
+						 		
+				
+				<div class="btn-group colored">
+					
+				</div>
+				<div class="modal fade mail-new-message" id="new-mail" role="modal" >
+					<div class="modal-dialog">
+					    <div class="modal-content">
+					    	<div class="modal-header">
+					        	<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+					        	<h4 class="modal-title">Share Modify</h4>
+					    	</div>
+					    	<div class="modal-body nopadding">
+					        	<form action="#">
+									<div class="new-message-to">
+										Share ID <input type="text" name="message-to"  value="#{ShareController.share.idShare}"/>
+									</div>
+									<div class="new-message-subject">
+										Subject: <input type="text" name="message-subject" />
+									</div>
+									<div class="new-message-content">
+										<textarea name="message-content"></textarea>
+									</div>
+					        	</form>
+					    	</div>
+					    	<div class="modal-footer">
+					        	<button type="button" class="btn btn-danger" data-dismiss="modal">Discard</button>
+					        	<button type="button" class="btn btn-success" data-dismiss="modal">Save</button> &nbsp; &nbsp; 
+					        	
+					      	</div>
+					    </div><!-- /.modal-content -->
+					</div><!-- /.modal-dialog -->
+				</div>
+				
+						 		
+						 		
+						
+						 		
+									
+            </ui:define>
+
+        </ui:composition>
+        
+    </h:body>
+</html>

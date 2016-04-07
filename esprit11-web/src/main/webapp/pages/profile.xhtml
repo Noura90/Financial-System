@@ -1,0 +1,113 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:body>
+	<ui:composition template="template2.xhtml">
+
+		<ui:define name="title">
+             Manage profile 
+             </ui:define>
+		<ui:define name="minititle">
+			<h5>Manage profile</h5>
+		</ui:define>
+		<ui:define name="title4">
+             Manage profile 
+             </ui:define>
+
+
+		<ui:define name="content1">
+
+			<div class="row">
+			 <h:form rendered="#{!authenticationController.loggedIn}">
+						<div class="alert alert-danger">
+							You should be logged in to get access to this area. Please Sign up
+							<h:commandLink
+								action="login2?faces-redirect=true"
+								value="here" />
+						</div>
+					</h:form>          
+				<h:form rendered="#{authenticationController.loggedIn}" id="registrationForm">
+
+
+					<div class="form-group">
+						<h:outputText value="User Name" />
+						<h:message for="firstNameField" styleClass="form-error" />
+						<h:inputText id="firstNameField" class="form-control"
+							required="true" requiredMessage=" is mendatory"
+							validatorMessage=" is an alphabetical field"
+							value="#{authenticationController.customer.name_user}">
+							<f:validateRegex pattern="[a-z A-Z]*" for="firstNameField" />
+						</h:inputText>
+					</div>
+
+
+
+					<div class="form-group">
+						<h:outputText value="E-mail" />
+						<h:message for="eMailField" styleClass="form-error" />
+						<h:inputText id="eMailField" class="form-control" required="false"
+							requiredMessage=" is mendatory"
+							validatorMessage=" must be well formed"
+							value="#{authenticationController.customer.email_user}">
+							<f:validateRegex
+								pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$"
+								for="eMailField" />
+						</h:inputText>
+
+					</div>
+					<div class="form-group">
+						<h5>Birthday</h5>
+						<p:calendar value="#{authenticationController.customer.birthday}"
+							pattern="MM/dd/yyyy" />
+					</div>
+					<div class="form-group">
+						<h:outputText value="Password" />
+						<h:message for="passwordField" styleClass="form-error" />
+						<h:inputSecret id="passwordField" redisplay="true"
+							class="form-control" required="true"
+							requiredMessage=" is mendatory"
+							validatorMessage=" length must be between 8 and 12 characters"
+							value="#{authenticationController.customer.password_user}">
+							<f:validateLength minimum="8" maximum="12" for="passwordField" />
+						</h:inputSecret>
+					</div>
+
+					<div class="form-group">
+						<h:outputText value="Address" />
+						<h:message for="addressField" styleClass="form-error" />
+						<h:inputText id="addressField" class="form-control"
+							required="true" requiredMessage=" is mendatory"
+							validatorMessage=" is an alphabetical field"
+							value="#{authenticationController.customer.address_Customer}">
+							<f:validateRegex pattern="[a-z  A-Z]*" for="addressField" />
+						</h:inputText>										
+					</div>
+					<!-- <div class="pull-left">
+						<a href="login2.xhtml" class="grey flip-link to-login">Click
+							to login</a>
+					</div> -->
+
+
+					<h:commandButton class="btn btn-block btn-primary btn-default"
+						value="Update" type="submit"
+						action="#{authenticationController.updateProfileCustomer()}" />
+					<br />
+					
+<br />
+					
+					
+				</h:form>
+			</div>
+
+
+		</ui:define>
+
+	</ui:composition>
+
+</h:body>
+</html>

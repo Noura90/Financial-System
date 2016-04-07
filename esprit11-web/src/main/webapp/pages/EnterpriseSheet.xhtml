@@ -1,0 +1,292 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+
+<ui:composition template="template2.xhtml">
+	<ui:define name="title4">
+		<h1>Les Fiches Des Societes</h1>
+	</ui:define>
+	<ui:define name="title">
+             Les Fiches Des Societes
+             </ui:define>
+	<ui:define name="minititle">
+		<h5>Les Fiches Des Societes</h5>
+	</ui:define>
+
+
+	<ui:define name="content1">
+		<br></br>
+
+		<h:form rendered="#{authenticationController.loggedIn}">
+			<h:messages layout="table" styleClass="form-error" showDetail="true" />
+
+
+
+			<!-- MAIN COLUMN -->
+			<div id="main">
+				<div class="content">
+
+					<div style="margin-top: 25px;">
+						<h:head></h:head>
+						<h:body>
+							<f:view>
+								<h:form id="form">
+
+									<p:scrollPanel style="height:800px;width:1000px">
+
+										<p:panel id="panel"
+											header=" ---  ENTERPRISES SHEET --- "
+											style="height:1000px;width:4000px">
+
+
+											<br />
+											<br />
+											<br />
+
+
+											<center>
+												<table>
+													<tr>
+														<td><p:selectOneMenu
+																value="#{affectationTypeEnterpriseSector.idSector}">
+																<f:selectItems
+																	value="#{affectationTypeEnterpriseSector.itemsSectors}" />
+															</p:selectOneMenu></td>
+
+														<td><p:commandButton value="VOIR"
+																update="dataTable"
+																actionListener="#{affectationTypeEnterpriseSector.updateDataTableSector}" /></td>
+													</tr>
+												</table>
+												<p:dataTable id="dataTable" var="ensParSector"
+													value="#{affectationTypeEnterpriseSector.listeParSectors}"
+													rowKey="#{ensParSector.sector.refSector}"
+													selectionMode="single"
+													emptyMessage="THERE IS NO SUCH INFORMATION "
+													paginator="true" rows="10"
+													paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+													rowsPerPageTemplate="5,10,15">
+
+
+
+
+													<p:column headerText="Reference"
+														filterBy="#{ensParSector.sector.refSector}"
+														sortBy="#{ensParSector.sector.refSector}">
+														<f:facet name="header">
+															<h:outputText value="REFERENCE" />
+														</f:facet>
+														<h:outputText value="#{ensParSector.sector.refSector}" />
+
+													</p:column>
+
+
+													<p:column headerText="NOM DE L'ENTREPRISE"
+														filterBy="#{ensParSector.enterprise.nom}"
+														sortBy="#{ensParSector.enterprise.nom}">
+														<f:facet name="header">
+															<h:outputText value="NOM DE L'ENTREPRISE" />
+														</f:facet>
+														<h:outputText value="#{ensParSector.enterprise.nom}" />
+													</p:column>
+
+
+													<p:column headerText="VALEUR NOMINALE"
+														filterBy="#{ensParSector.enterprise.nominalValue}"
+														sortBy="#{ensParSector.enterprise.nominalValue}">
+														<f:facet name="header">
+															<h:outputText value="VALEUR NOMINALE" />
+														</f:facet>
+														<h:outputText value="#{ensParSector.enterprise.cours}" />
+													</p:column>
+
+													<p:column headerText="VAR. DER. CLOTURE %"
+														filterBy="#{ensParSector.enterprise.lastClosingVariation}"
+														sortBy="#{ensParSector.enterprise.lastClosingVariation}">
+														<f:facet name="header">
+															<h:outputText value="VAR. DER. CLOTURE %" />
+														</f:facet>
+														<h:outputText
+															value="#{ensParSector.enterprise.lastClosingVariation}" />
+													</p:column>
+
+													<p:column headerText="BID"
+														filterBy="#{ensParSector.enterprise.bid}"
+														sortBy="#{ensParSector.enterprise.bid}">
+														<f:facet name="header">
+															<h:outputText value="BID" />
+														</f:facet>
+														<h:outputText value="#{ensParSector.enterprise.bid}" />
+													</p:column>
+
+
+													
+
+
+													<p:column headerText="ASK"
+														filterBy="#{ensParSector.enterprise.ask}"
+														sortBy="#{ensParSector.enterprise.ask}">
+														<f:facet name="header">
+															<h:outputText value="ASK" />
+														</f:facet>
+														<h:outputText value="#{ensParSector.enterprise.ask}" />
+													</p:column>
+
+
+													<p:column headerText="CAPITAL BOURSIERE"
+														filterBy="#{ensParSector.enterprise.capitalMarket}"
+														sortBy="#{ensParSector.enterprise.capitalMarket}">
+														<f:facet name="header">
+															<h:outputText value="CAPITAL BOURSIERE" />
+														</f:facet>
+														<h:outputText
+															value="#{ensParSector.enterprise.capitalMarket}" />
+													</p:column>
+
+
+													<p:column headerText="MM(20)-MM(50)"
+														filterBy="#{ensParSector.enterprise.mMtwentyMMfifty}"
+														sortBy="#{ensParSector.enterprise.mMtwentyMMfifty}">
+														<f:facet name="header">
+															<h:outputText value="MM(20)-MM(50)" />
+														</f:facet>
+														<h:outputText
+															value="#{ensParSector.enterprise.mMtwentyMMfifty}" />
+													</p:column>
+
+
+													<p:column headerText="ECHG. QUOT. MOYEN "
+														filterBy="#{ensParSector.enterprise.anualAverageExchangeQuotation}"
+														sortBy="#{ensParSector.enterprise.anualAverageExchangeQuotation}">
+														<f:facet name="header">
+															<h:outputText value="ECHG. QUOT. MOYEN " />
+														</f:facet>
+														<h:outputText
+															value="#{ensParSector.enterprise.anualAverageExchangeQuotation}" />
+													</p:column>
+
+
+													<p:column headerText="NBRE D'ACTIONS"
+														filterBy="#{ensParSector.enterprise.sharesNumber}"
+														sortBy="#{ensParSector.enterprise.sharesNumber}">
+														<f:facet name="header">
+															<h:outputText value="NBRE D'ACTIONS" />
+														</f:facet>
+														<h:outputText
+															value="#{ensParSector.enterprise.sharesNumber}" />
+													</p:column>
+
+
+													
+
+
+
+													<p:column headerText="PER (sur 1 année)"
+														filterBy="#{ensParSector.enterprise.priceEarningsRatio}"
+														sortBy="#{ensParSector.enterprise.priceEarningsRatio}">
+														<f:facet name="header">
+															<h:outputText value="PER (sur 1 année)" />
+														</f:facet>
+														<h:outputText
+															value="#{ensParSector.enterprise.priceEarningsRatio}" />
+													</p:column>
+
+
+													<p:column headerText="BPA(sur 1 année)"
+														filterBy="#{ensParSector.enterprise.beneficePerAction}"
+														sortBy="#{ensParSector.enterprise.beneficePerAction}">
+														<f:facet name="header">
+															<h:outputText value="BPA(sur 1 année)" />
+														</f:facet>
+														<h:outputText
+															value="#{ensParSector.enterprise.beneficePerAction}" />
+													</p:column>
+
+
+
+													<p:column headerText="DERNIER DIVIDENDE"
+														filterBy="#{ensParSector.enterprise.lastDividend}"
+														sortBy="#{ensParSector.enterprise.lastDividend}">
+														<f:facet name="header">
+															<h:outputText value="DERNIER DIVIDENDE" />
+														</f:facet>
+														<h:outputText
+															value="#{ensParSector.enterprise.lastDividend}" />
+													</p:column>
+
+
+
+													<p:column headerText="DATE DISTRIBUTION"
+														filterBy="#{ensParSector.enterprise.distributionDate}"
+														sortBy="#{ensParSector.enterprise.distributionDate}">
+														<f:facet name="header">
+															<h:outputText value="DATE DISTRIBUTION" />
+														</f:facet>
+														<h:outputText
+															value="#{ensParSector.enterprise.distributionDate}" />
+													</p:column>
+
+
+													<p:column headerText="RdtAjustéDepuisLe31_12_2014"
+														filterBy="#{ensParSector.enterprise.rdtAjustéDepuisLe31_12_2014}"
+														sortBy="#{ensParSector.enterprise.rdtAjustéDepuisLe31_12_2014}">
+														<f:facet name="header">
+															<h:outputText value="rdtAjustéDepuisLe31_12_2014" />
+														</f:facet>
+														<h:outputText
+															value="#{ensParSector.enterprise.rdtAjustéDepuisLe31_12_2014}" />
+													</p:column>
+
+													<p:column headerText="Advance/Decline"
+														filterBy="#{ensParSector.enterprise.advance_Decline}"
+														sortBy="#{ensParSector.enterprise.advance_Decline}">
+														<f:facet name="header">
+															<h:outputText value="Advance/Decline" />
+														</f:facet>
+														<h:outputText
+															value="#{ensParSector.enterprise.advance_Decline}" />
+													</p:column>
+
+
+													
+
+
+
+
+												</p:dataTable>
+
+											
+
+
+											</center>
+
+
+										</p:panel>
+
+									</p:scrollPanel>
+
+
+
+
+								</h:form>
+							</f:view>
+						</h:body>
+						<!-- TO REMOVE -->
+					</div>
+				</div>
+			</div>
+			<!-- END MAIN -->
+		</h:form>
+
+
+
+	</ui:define>
+
+</ui:composition>
+
+</html>

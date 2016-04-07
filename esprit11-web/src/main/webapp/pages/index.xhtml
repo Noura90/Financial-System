@@ -1,0 +1,127 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:h="http://java.sun.com/jsf/html" xmlns:c="http://java.sun.com/jsp/jstl/core">
+
+    <h:body >
+  
+		
+	
+        <ui:composition template="template.xhtml">
+
+
+             <ui:define name="title">
+             Les Statistiques
+             </ui:define>
+             <ui:define name="minititle">
+             <h5>Les Statistiques</h5>
+             </ui:define>
+
+
+            <ui:define name="content1">
+           <div class="row">
+					<div class="col-xs-12">
+						<div class="widget-box widget-plain">
+							<div class="widget-content center">
+								<ul class="stats-plain">
+									<li>										
+										<h4><h:outputText value=" #{TransactionController.TransactionsNumber()}" /></h4>
+										<span>Les Transactions</span>
+									</li>
+									<li>										
+										<h4><h:outputText value=" #{customerController.CustomerNumber()}" /></h4>
+										<span>Les Utilisateurs</span>
+									</li>
+									<li>										
+										<h4> <h:outputText value=" #{ShareController.CountShares()}" /></h4>
+										<span>Les Actions</span>
+									</li>
+									<li>										
+										<h4><h:outputText value=" #{MyBondsController.BondsNumber()}" /></h4>
+										<span>Les Obligations</span>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+						<div class="col-xs-12 center" style="text-align: center;">					
+							<ul class="quick-actions">
+								
+								<li>
+									<a href="MyTransaction.xhtml">
+										<i class="icon-shopping-bag"></i>
+										Gérer Les Transactions
+									</a>
+								</li>
+								<li>
+									<a href="MarketShare.xhtml">
+										<i class="icon-database"></i>
+										Gérer Les Actions
+									</a>
+								</li>
+								
+								<li>
+									<a href="MarketBond.xhtml">
+										<i class="icon-lock"></i>
+										Gérer Les Obligations
+									</a>
+								</li>
+								<li>
+									<a href="index.xhtml">
+										<i class="icon-piechart"></i>
+										Les Statistiques
+									</a>
+								</li>
+							</ul>
+						</div>	
+					</div>
+				<div class="row">
+					<div class="col-xs-12">
+						<div class="widget-box">
+							<div class="widget-title">
+								<span class="icon">
+									<i class="fa fa-bar-chart-o"></i>
+								</span>
+								<h5>Bar chart</h5>
+							</div>
+							<div class="widget-content">
+								<div id="chartContainer1" style="height: 300px; width: 100%;"></div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-xs-12 col-sm-6">
+						<div class="widget-box">
+							<div class="widget-title">
+								<span class="icon">
+									<i class="fa fa-bar-chart-o"></i>
+								</span>
+								<h5>Spline chart</h5>
+							</div>
+							<div class="widget-content">
+								<div id="chartContainer5" style="height: 300px; width: 100%;"></div>
+							</div>
+						</div>
+					</div>
+					<div class="col-xs-12 col-sm-6">
+						<div class="widget-box">
+							<div class="widget-title">
+								<span class="icon">
+									<i class="fa fa-bar-chart-o"></i>
+								</span>
+								<h5>Pie chart</h5>
+							</div>
+							<div class="widget-content">
+								<div id="chartContainer" style="height: 300px; width: 100%;"></div>
+							</div>
+						</div>
+					</div>
+				</div>
+				
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>

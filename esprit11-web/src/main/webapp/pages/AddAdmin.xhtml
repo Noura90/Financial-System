@@ -1,0 +1,139 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+  
+
+        <ui:composition template="template2Admin.xhtml">
+
+
+             <ui:define name="title">
+             AJOUTER ADMIN
+             </ui:define>
+             <ui:define name="minititle">
+             <h5>AJOUTER ADMIN</h5>
+             </ui:define>
+             <ui:define name="title4">
+            AJOUTER ADMIN
+             </ui:define>
+
+
+            <ui:define name="content1">
+            
+           	<div class="row">
+					<div class="col-xs-12">
+						<div class="widget-box">
+							<div class="widget-title">
+								<span class="icon">
+									<i class="fa fa-align-justify"></i>									
+								</span>
+								<h5>AJOUTER ADMIN</h5>
+								
+							</div>
+							<div class="widget-content nopadding">
+							<h:form rendered="#{!authenticationControllerAdmin.loggedIn}">
+						<div class="alert alert-danger">
+							You should be logged in to get access to this area. Please Sign up
+							<h:commandLink
+								action="loginAdmin?faces-redirect=true"
+								value="here" />
+						</div>
+					</h:form>
+							<h:form rendered="#{authenticationControllerAdmin.loggedIn}" class="form-horizontal" method="post" action="indexAdmin.xhtml" name="basic_validate" id="basic_validate" novalidate="novalidate">
+								<!--   -->
+           
+				<div class="container">
+		<div class="row">
+			<div class="col-md-4 col-md-offset-4">
+				<div class="login-panel panel panel-default">
+					<div class="panel-heading">
+						<h3 class="panel-title">Entrez les informations requises :</h3>
+					</div>
+					<h:form id="registrationForm">
+						<div class="panel-body">
+							<fieldset>
+								<div class="form-group">
+									<h:outputText value="NOM " />
+									<h:message for="firstNameField" styleClass="form-error" />
+									<h:inputText id="firstNameField" class="form-control"
+										required="true" requiredMessage=" is mendatory"
+										validatorMessage=" is an alphabetical field"
+										value="#{registrationControllerAdmin.admin.name_user}">
+										<f:validateRegex pattern="[a-z A-Z]*" for="firstNameField" />
+									</h:inputText>
+								</div>
+
+
+
+								<div class="form-group">
+									<h:outputText value="E-mail" />
+									<h:message for="eMailField" styleClass="form-error" />
+									<h:inputText id="eMailField" class="form-control"
+										required="false" requiredMessage=" is mendatory"
+										validatorMessage=" must be well formed"
+										value="#{registrationControllerAdmin.admin.email_user}">
+										<f:validateRegex
+											pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$"
+											for="eMailField" />
+									</h:inputText>
+								</div>
+								<div class="form-group">
+									<h5>DATE DE NAISSANCE</h5>
+									<p:calendar value="#{registrationControllerAdmin.admin.birthday}"
+										pattern="MM/dd/yyyy" />
+								</div>
+								<div class="form-group">
+									<h:outputText value="MOT DE PASSE" />
+									<h:message for="passwordField" styleClass="form-error" />
+									<h:inputSecret id="passwordField" redisplay="true"
+										class="form-control" required="true"
+										requiredMessage=" is mendatory"
+										validatorMessage=" length must be between 8 and 12 characters"
+										value="#{registrationControllerAdmin.admin.password_user}">
+										<f:validateLength minimum="8" maximum="12" for="passwordField" />
+									</h:inputSecret>
+								</div>
+								<div class="form-group">
+									<h:outputText value="ADRESSE" />
+									<h:message for="addressField" styleClass="form-error" />
+									<h:inputText id="addressField" class="form-control"
+										required="true" requiredMessage=" is mendatory"
+										validatorMessage=" is an alphabetical field"
+										value="#{registrationControllerAdmin.admin.address_Admin}">
+										<f:validateRegex pattern="[a-z  A-Z]*" for="addressField" />
+									</h:inputText>
+								</div>
+								
+
+								<h:commandButton class="btn btn-block btn-primary btn-default"
+									value="AJOUTER ADMIN" type="submit"
+									action="#{registrationControllerAdmin.doRegisterAdmin1()}" />
+							</fieldset>
+							<br /> <br />
+							<h:messages layout="table" styleClass="form-error"
+								showDetail="true" />
+						</div>
+					</h:form>
+				</div>
+			</div>
+		</div>
+	</div>
+				
+				
+				
+		             </h:form>
+							</div>
+						</div>			
+					</div>
+				</div>		
+									
+            </ui:define>
+
+        </ui:composition>
+     
+
+</html>

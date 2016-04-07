@@ -1,0 +1,113 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+    
+        <ui:composition template="template2.xhtml">
+             <ui:define name="title4">
+            <h1> Enterprise Sheet</h1>             </ui:define>
+             <ui:define name="title">
+             Enterprise Sheet
+             </ui:define>
+             <ui:define name="minititle">
+             <h5>Enterprise Sheet</h5>
+             </ui:define>
+
+
+            <ui:define name="content1">
+            <br></br>
+              
+<h:form rendered="#{authenticationController.loggedIn}">
+<h:messages layout="table" styleClass="form-error"
+								showDetail="true" />
+	<h:dataTable class="table table-bordered table-striped table-hover data-table" border="0" rules="all" value="#{TShareController.shares}"
+		var="share">
+		<h:column>
+			<f:facet name="header">
+				<h:outputText value="photo of share" />
+			</f:facet>
+								<img src="../resources/UploadedImages/#{share.imageLink}" width="100" height="100"></img>
+		</h:column>
+		<h:column>
+			<f:facet name="header">
+				<h:outputText value="type of share" />
+			</f:facet>
+			<h:outputText value="#{share.typeShare}" />
+		</h:column>
+		<h:column>
+			<f:facet name="header">
+				<h:outputText value="description of share" />
+			</f:facet>
+			<h:outputText value="#{share.description}" />
+		</h:column>
+		<h:column>
+			<f:facet name="header">
+				<h:outputText value="number of capital" />
+			</f:facet>
+			<h:outputText value="#{share.nbrCapital}" />
+		</h:column>
+		<h:column>
+		<f:facet name="header">
+								Actions
+		</f:facet>
+		
+											<h:commandLink
+												action="#{TShareController.addTransaction()}"
+												value="buy">
+												<f:setPropertyActionListener
+													target="#{TShareController.share}" value="#{share}" />
+											</h:commandLink>
+</h:column>	
+</h:dataTable>
+
+</h:form>
+<h:form rendered="#{!authenticationController.loggedIn}">
+						<div class="alert alert-danger">
+							You should be logged in to get access to this area. Please Sign up
+							<h:commandLink
+								action="login2?faces-redirect=true"
+								value="here" />
+						</div>
+					</h:form>
+					
+						<h:form id="jsfexample">
+      
+        <p:dataTable value="#{manager.returnCacheListAllShare()}" var="item" id="mydata" rendered="false">
+            <p:column>
+                <f:facet name="header">Type Share</f:facet>
+                <h:outputText value="#{item.typeShare}" />
+            </p:column>
+            <p:column>
+                <f:facet name="header">Description</f:facet>
+                <h:outputText value="#{item.description}" />
+            </p:column>
+            <p:column>
+                <f:facet name="header">Capitals Number</f:facet>
+                <h:outputText value="#{item.nbrCapital}" />
+            </p:column>
+           
+        </p:dataTable>
+        <p:panel >
+            <h:commandLink>
+                <p:graphicImage value="../resources/img/excel_icon.png"  width="100" height="100"/>
+                <p:dataExporter type="xls" postProcessor="#{manager.postProcessXLS}"
+                    target="mydata" fileName="myexcel" />
+            </h:commandLink>
+            <h:commandLink>
+                <p:graphicImage value="../resources/img/NoP_PDF_downlaod.png"  width="100" height="100"/>
+                <p:dataExporter type="pdf" target="mydata" fileName="mypdf" />
+            </h:commandLink>
+        </p:panel>
+
+    </h:form>
+					
+					
+            </ui:define>
+
+        </ui:composition>
+
+</html>

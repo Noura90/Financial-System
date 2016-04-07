@@ -1,0 +1,317 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<title><ui:insert name="title">Default</ui:insert></title>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link rel="stylesheet" href="../resources/css/bootstrap.min.css" />
+	<link rel="stylesheet" href="../resources/css/font-awesome.css" />
+	<link rel="stylesheet" href="../resources/css/fullcalendar.css" />
+	<link rel="stylesheet" href="../resources/css/unicorn.css" />
+
+
+
+	<link rel="stylesheet" href="../resources/css/jquery-ui.css" />
+	<link rel="stylesheet" href="../resources/css/icheck/flat/blue.css" />
+	<link rel="stylesheet" href="../resources/css/select2.css" />
+
+
+
+	<!--[if lt IE 9]>
+		<script type="text/javascript" src="js/respond.min.js"></script>
+		<![endif]-->
+
+</h:head>
+
+<body data-color="grey" class="flat">
+	<div id="wrapper">
+		<div id="header">
+			<h1>
+				<a href="index.xhtml">Unicorn Admin</a>
+			</h1>
+			<a id="menu-trigger" href="#"><i class="fa fa-bars"></i></a>
+		</div>
+
+
+		<div class="bookmark">
+			<center>
+				<div class="addthis_toolbox addthis_default_style">
+					<a
+						href="http://www.addthis.com/bookmark.php?v=250&amp;username=xa-4b2e9242015355c6"
+						class="addthis_button_compact at300m"><span
+						class="at16nc at300bs at15nc at15t_compact at16t_compact"><span
+							class="at_a11y">More Sharing Services</span></span>Partager</a> <span
+						class="addthis_separator" tabindex="1000">|</span> <a
+						class="addthis_button_facebook at300b" title="Facebook" href="#"><span
+						class="at16nc at300bs at15nc at15t_facebook at16t_facebook"><span
+							class="at_a11y">Share on facebook</span></span></a> <a
+						class="addthis_button_myspace at300b"
+						href="http://www.addthis.com/bookmark.php?v=300&amp;winname=addthis&amp;pub=xa-4b2e9242015355c6&amp;source=tbx-300&amp;lng=fr&amp;s=myspace&amp;url=http%3A%2F%2Fwww.mehdibb.com%2Findex.html%3Fid%3D32%26fb_action_ids%3D692642790769979%26fb_action_types%3Dog.likes%26action_object_map%3D%255B1436279586602933%255D%26action_type_map%3D%255B%2522og.likes%2522%255D%26action_ref_map%3D%255B%255D&amp;title=Mehdi%20Ben%20Braiek%20-%20Web%20D%C3%A9veloppeur%20PHP%20%2F%20MySQL%20%26%20Ajax%20-%20Accessibilit%C3%A9%20et%20standards%20W3C%20-%20Cr%C3%A9ation%20de%20sites%20web%20en%20Tunisie%20!&amp;ate=AT-xa-4b2e9242015355c6/-/-/52cde9befb7152bb/2&amp;frommenu=1&amp;uid=52cde9bebfc8e9ec&amp;trackurl=http%3A%2F%2Fwww.mehdibb.com%2Findex.html%3Fid%3D32%26fb_action_ids%3D692642790769979%26fb_action_types%3Dog.likes%26fb_source%3Dother_multiline%26action_object_map%3D%255B1436279586602933%255D%26action_type_map%3D%255B%2522og.likes%2522%255D%26action_ref_map%3D%255B%255D&amp;ct=1&amp;tt=0&amp;captcha_provider=nucaptcha"
+						target="_blank" title="Myspace"><span
+						class="at16nc at300bs at15nc at15t_myspace at16t_myspace"><span
+							class="at_a11y">Share on myspace</span></span></a> <a
+						class="addthis_button_google at300b"
+						href="http://www.addthis.com/bookmark.php?v=300&amp;winname=addthis&amp;pub=xa-4b2e9242015355c6&amp;source=tbx-300&amp;lng=fr&amp;s=google&amp;url=http%3A%2F%2Fwww.mehdibb.com%2Findex.html%3Fid%3D32%26fb_action_ids%3D692642790769979%26fb_action_types%3Dog.likes%26action_object_map%3D%255B1436279586602933%255D%26action_type_map%3D%255B%2522og.likes%2522%255D%26action_ref_map%3D%255B%255D&amp;title=Mehdi%20Ben%20Braiek%20-%20Web%20D%C3%A9veloppeur%20PHP%20%2F%20MySQL%20%26%20Ajax%20-%20Accessibilit%C3%A9%20et%20standards%20W3C%20-%20Cr%C3%A9ation%20de%20sites%20web%20en%20Tunisie%20!&amp;ate=AT-xa-4b2e9242015355c6/-/-/52cde9befb7152bb/3&amp;frommenu=1&amp;uid=52cde9bed46e761b&amp;trackurl=http%3A%2F%2Fwww.mehdibb.com%2Findex.html%3Fid%3D32%26fb_action_ids%3D692642790769979%26fb_action_types%3Dog.likes%26fb_source%3Dother_multiline%26action_object_map%3D%255B1436279586602933%255D%26action_type_map%3D%255B%2522og.likes%2522%255D%26action_ref_map%3D%255B%255D&amp;ct=1&amp;tt=0&amp;captcha_provider=nucaptcha"
+						target="_blank" title="Google"><span
+						class="at16nc at300bs at15nc at15t_google at16t_google"><span
+							class="at_a11y">Share on google</span></span></a> <a
+						class="addthis_button_twitter at300b" title="Tweet" href="#"><span
+						class="at16nc at300bs at15nc at15t_twitter at16t_twitter"><span
+							class="at_a11y">Share on twitter</span></span></a>
+					<div class="atclear"></div>
+				</div>
+				<script type="text/javascript"
+					src="http://s7.addthis.com/js/250/addthis_widget.js#username=xa-4b2e9242015355c6"></script>
+				<div id="_atssh"
+					style="visibility: hidden; height: 1px; width: 1px; position: absolute; z-index: 100000;">
+					<iframe id="_atssh425" title="AddThis utility frame"
+						style="height: 1px; width: 1px; position: absolute; z-index: 100000; border: 0px; left: 0px; top: 0px;"
+						src="//ct1.addthis.com/static/r07/sh142.html#iit=1389226436063&amp;tmr=load%3D1389226430586%26core%3D1389226430694%26main%3D1389226436058%26ifr%3D1389226436065&amp;cb=0&amp;cdn=1&amp;chr=ISO-8859-1&amp;kw=mehdi%20ben%20braiek%2Ccr%C3%A9ation%20site%20internet%20tunisie%2Cd%C3%A9veloppement%20site%20tunisie%2Cd%C3%A9veloppeur%20tunisien%2Ctunisie&amp;ab=-&amp;dh=www.mehdibb.com&amp;dr=&amp;du=http%3A%2F%2Fwww.mehdibb.com%2Findex.html%3Fid%3D32%26fb_action_ids%3D692642790769979%26fb_action_types%3Dog.likes%26action_object_map%3D%255B1436279586602933%255D%26action_type_map%3D%255B%2522og.likes%2522%255D%26action_ref_map%3D%255B%255D&amp;dt=Mehdi%20Ben%20Braiek%20-%20Web%20D%C3%A9veloppeur%20PHP%20%2F%20MySQL%20%26%20Ajax%20-%20Accessibilit%C3%A9%20et%20standards%20W3C%20-%20Cr%C3%A9ation%20de%20sites%20web%20en%20Tunisie%20!&amp;dbg=0&amp;md=0&amp;cap=tc%3D0%26ab%3D0&amp;inst=1&amp;vcl=0&amp;jsl=1&amp;prod=undefined&amp;lng=fr&amp;ogt=&amp;pc=men&amp;pub=xa-4b2e9242015355c6&amp;ssl=0&amp;sid=52cde9befb7152bb&amp;srpl=1&amp;srcs=1&amp;srd=1&amp;srf=1&amp;srx=1&amp;ver=300&amp;xck=0&amp;xtr=0&amp;og=&amp;aa=0&amp;rev=125734&amp;ct=1&amp;xld=1&amp;xd=1"></iframe>
+				</div>
+				<script type="text/javascript"
+					src="http://ct1.addthis.com/static/r07/core115.js"></script>
+			</center>
+		</div>
+
+		<div id="user-nav">
+			<ul class="btn-group">
+				<li class="btn"><a class="text" href="profile.xhtml"><i
+						class="fa fa-user"> </i> profile </a></li>
+				<li class="btn dropdown" id="menu-messages"><a href="#"
+					data-toggle="dropdown" data-target="#menu-messages"
+					class="dropdown-toggle"><i class="fa fa-envelope"></i> <span
+						class="text">Messages</span> <!--   <span class="label label-danger">5</span>-->
+						<b class="caret"></b></a>
+					<ul class="dropdown-menu messages-menu">
+						<li class="title"><i class="fa fa-envelope-alt"></i>Messages<a
+							class="title-btn" href="#" title="Write new message"><i
+								class="fa fa-share"></i></a></li>
+						<li class="message-item"><a href="#"> <img
+								alt="User Icon" src="../resources/img/demo/av1.jpg" />
+								<div class="message-content">
+									<span class="message-time"> 3 mins ago </span> <span
+										class="message-sender"> Sana Ayedi  </span> <span
+										class="message"> Hi, can you meet me at the office
+										tomorrow morning? </span>
+								</div>
+						</a></li>
+						<li class="message-item"><a href="#"> <img
+								alt="User Icon" src="../resources/img/demo/av2.jpg" />
+								<div class="message-content">
+									<span class="message-time"> 2 hours ago </span> <span
+										class="message-sender"> Salma belhaj </span> <span
+										class="message"> Hello, which share should i buy ?? </span>
+								</div>
+						</a></li>
+						<li class="message-item"><a href="#"> <img
+								alt="User Icon" src="../resources/img/demo/av3.jpg" />
+								<div class="message-content">
+									<span class="message-time"> 1 day ago </span> <span
+										class="message-sender"> Hanen chouchen </span> <span
+										class="message"> Good morning :D </span>
+								</div>
+						</a></li>
+					</ul></li>
+					
+					<li class="btn"><a title="" href="https://www.facebook.com/pages/ilboursacom/296266907136787?fref=ts" target="https://www.facebook.com/pages/ilboursacom/296266907136787?fref=ts"><i class="fa fa-cog"></i> <span class="text">facebook</span></a></li>
+                 <li class="btn"><a title="" href="https://www.youtube.com/channel/UCIWq9frqGHuOWYETcPH9V3g" target="https://www.youtube.com/channel/UCIWq9frqGHuOWYETcPH9V3g"><i class="fa fa-cog"></i> <span class="text">Youtube</span></a></li>
+               <li class="btn"><a title="" href="https://twitter.com/" target="https://twitter.com/"><i class="fa fa-cog"></i> <span class="text">Twitter</span></a></li>
+
+					
+				<li class="btn"><a title="" href="#"><i class="fa fa-cog"></i>
+						<span class="text">Settings</span></a></li>
+				<li class="btn"><a title="" href="login2.xhtml"><i
+						class="fa fa-share"></i> <span class="text">Logout</span></a></li>
+			</ul>
+		</div>
+
+
+
+				<div id="sidebar">
+			<div id="search">
+				<input type="text" placeholder="Search here..." />
+				<button type="submit" class="tip-right" title="Search">
+					<i class="fa fa-search icon-white"></i>
+				</button>
+			</div>
+			<ul>
+				<li><a href="index.xhtml"><i class="fa fa-home"></i> 
+				<span>Dashboard</span></a></li>
+				
+				
+			<li><a href="tuto.xhtml"><i class="fa fa-th"></i>
+						<span>En savoir plus</span></a></li>
+				
+			
+			<li><a href="Currencies.xhtml"><i class="fa fa-th"></i>
+						<span>Convertisseur Des Devises</span></a></li>
+						
+						
+			
+			 <li><a href="forex.xhtml"><i class="fa fa-th"></i>
+						<span>Graphe Des Devises</span></a></li>
+						
+			
+			<li class="submenu"><a href="#"><i class="fa fa-flask"></i>
+						<span>Cours Des Devises</span> <i
+						class="arrow fa fa-chevron-right"></i></a>
+					<ul>
+						<li><a href="Attijari.xhtml">Attijari</a></li>
+						<li><a href="Attijari.xhtml">BNA</a></li>
+						<li><a href="Attijari.xhtml">BIAT</a></li>
+						
+					</ul></li>
+					
+					
+					
+			<li><a href="Quotation.xhtml"><i class="fa fa-th"></i>
+						<span>Les Cotations</span></a></li>
+						
+						
+			
+			<li><a href="shareScreener.xhtml"><i class="fa fa-th"></i>
+						<span>Graphe Des Actions</span></a></li>
+						
+						
+						
+			<li class="submenu"><a href="#"><i class="fa fa-flask"></i>
+						<span>Acheter Des Valeurs</span> <i
+						class="arrow fa fa-chevron-right"></i></a>
+					<ul>
+						<li><a href="MarketShare.xhtml">Les Actions</a></li>
+						<li><a href="MarketBond.xhtml">Les Obligations</a></li>
+					</ul></li>
+						
+						
+						
+			<li><a href="Portfolio.xhtml"><i class="fa fa-th"></i>
+						<span>Portefeuille</span></a></li>
+						
+					
+					
+			<li><a href="Transactions.xhtml"><i class="fa fa-th"></i>
+						<span>Mes Transactions</span></a></li>
+					
+					
+					
+			<li><a href="EnterpriseSheet.xhtml"><i class="fa fa-th"></i>
+						<span>Les Fiches Des Societes</span></a></li>
+						
+						
+						
+			<li><a href="news.xhtml"><i class="fa fa-th"></i>
+						<span>Les Nouveautes</span></a></li>
+						
+						
+						
+			<li><a href="chatScreener.xhtml"><i class="fa fa-th"></i>
+						<span>Forum de Discussion</span></a></li>
+					
+					
+					
+			<li><a href="index.xhtml"><i class="fa fa-signal"></i> 
+					<span>Les Statistiques</span></a></li>
+							
+				</ul>
+
+		</div>
+
+
+
+		<div id="content">
+			<div id="content-header">
+				<h1>
+					<ui:insert name="title4">Default</ui:insert>
+				</h1>
+
+				<div class="btn-group">
+					<a class="btn" title="Manage Files"><i class="fa fa-file"></i></a>
+					<a class="btn" title="Manage Users"><i class="fa fa-user"></i></a>
+					<a class="btn" title="Chat" href="chat.xhtml"><i class="fa fa-comment"></i></a>
+					<a class="btn" title="Manage Orders" href="Transactions.xhtml"><i
+						class="fa fa-shopping-cart"></i></a>
+				</div>
+				
+				
+				<center>
+				
+               <img src="LoginLogo.png" />
+			   <br></br>
+			   
+			 
+			
+			<iframe width="560" height="315" src="https://www.youtube.com/embed/dIcaglbv0rI" frameborder="0" ></iframe>
+			
+
+				
+				
+				
+				</center>
+				
+			</div>
+
+
+			<div class="row">
+				<div class="col-xs-12">
+					<div class="widget-box">
+						<div class="widget-title">
+							<span class="icon"> <i class="fa fa-th-list"></i>
+							</span>
+							<ui:insert name="minititle">
+								Default
+                                        </ui:insert>
+
+
+						</div>
+						<div class="widget-content">
+							<div class="invoice-content">
+								<div class="invoice-head">
+									<div class="invoice-meta">
+										<ui:insert name="content1">
+									
+										</ui:insert>
+									</div>
+
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="row-fluid">
+			<div id="footer" class="span12">2014 - 2015 &copy; ES-TRADING. All rights reserved</div>
+		</div>
+
+		<!-- 
+            <script src="../resources/js/jquery.min.js"></script>
+            <script src="../resources/js/jquery-ui.custom.js"></script>
+            <script src="../resources/js/bootstrap.min.js"></script>
+            
+            <script src="../resources/js/jquery.nicescroll.min.js"></script>
+            <script src="../resources/js/fullcalendar.min.js"></script>
+            <script src="../resources/js/unicorn.js"></script>
+            <script src="../resources/js/unicorn.calendar.js"></script>
+             -->
+
+		<script src="../resources/js/jquery-ui.custom.js"></script>
+		<script src="../resources/js/bootstrap.min.js"></script>
+		<script src="../resources/js/jquery.icheck.min.js"></script>
+		<script src="../resources/js/select2.min.js"></script>
+		<script src="../resources/js/jquery.dataTables.min.js"></script>
+
+		<script src="../resources/js/jquery.nicescroll.min.js"></script>
+		<script src="../resources/js/unicorn.js"></script>
+		<script src="../resources/js/unicorn.tables.js"></script>
+
+
+	</div>
+
+</body>
+</html>

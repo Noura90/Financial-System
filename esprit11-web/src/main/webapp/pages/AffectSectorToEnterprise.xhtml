@@ -1,0 +1,147 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+  
+
+        <ui:composition template="template2Admin.xhtml">
+
+
+             <ui:define name="title">
+             Affecter Les Secteurs
+             </ui:define>
+             <ui:define name="minititle">
+             <h5>Affecter Les Secteurs</h5>
+             </ui:define>
+             <ui:define name="title4">
+           Affecter Les Secteurs
+             </ui:define>
+
+
+            <ui:define name="content1">
+            
+            
+            
+             	<div class="row">
+					<div class="col-xs-12">
+						<div class="widget-box">
+							<div class="widget-title">
+								<span class="icon">
+									<i class="fa fa-align-justify"></i>									
+								</span>
+								<h5>AFFECTATION :</h5>
+								
+							</div>
+							<div class="widget-content nopadding">
+							<h:form rendered="#{!authenticationControllerAdmin.loggedIn}">
+						<div class="alert alert-danger">
+							You should be logged in to get access to this area. Please Sign up
+							<h:commandLink
+								action="loginAdmin?faces-redirect=true"
+								value="here" />
+						</div>
+					</h:form>
+							
+							<h:form id="form">
+											<br/>
+																						<br/>
+							<p:panel>
+												
+													<p:fieldset
+														legend="Affectation Of Sectors To Enterprises" >
+														<br />
+														<h6>ENTRER LES BONNES INFORMATIONS :</h6>
+
+														<br />
+														<center>
+															<h:panelGrid columns="2">
+																<h:outputLabel for="nomp" value="NOM DU SECTEUR : " />
+																<p:selectOneMenu
+																	value="#{affectationTypeEnterpriseSector.selectedSectorId}"
+																	id="nomp">
+																	<f:selectItems
+																		value="#{affectationTypeEnterpriseSector.itemsSectors}" />
+																</p:selectOneMenu>
+																
+																<h:outputLabel for="nome" value="NOM DE L'ENTREPRISE : " />
+																<p:selectOneMenu
+																	value="#{affectationTypeEnterpriseSector.selectedEnterpriseId}"
+																	id="nome">
+																	<f:selectItems
+																		value="#{affectationTypeEnterpriseSector.itemsEnterprises}" />
+																</p:selectOneMenu>
+																
+																<h:outputLabel for="type" value="TYPE : " />
+																<p:selectOneMenu
+																	value="#{affectationTypeEnterpriseSector.idSelectedType}"
+																	id="type">
+																	<f:selectItems
+																		value="#{affectationTypeEnterpriseSector.itemsTypes}" />
+																</p:selectOneMenu>
+																
+																<h:outputText value="STATUT: " />
+																<p:selectBooleanCheckbox
+																	value="#{affectationTypeEnterpriseSector.statut}" />
+
+																<h:outputLabel value="NOMBRE D'ACTIONS : " />
+																<p:keyboard value="#{affectationTypeEnterpriseSector.num}"
+																	keypadOnly="true" maxlength="42" showMode="button" />
+																	
+																	
+																<h:outputLabel value="Propriétaire : " />
+																<p:selectOneRadio id="options"
+																	value="#{affectationTypeEnterpriseSector.owner}">
+																	<f:selectItem itemLabel="TUNISIEN" itemValue="1" />
+																	<f:selectItem itemLabel="ETRANGER" itemValue="2" />
+																</p:selectOneRadio>
+																<h:outputLabel value="reputation : " />
+																<p:selectOneRadio id="options1"
+																	value="#{affectationTypeEnterpriseSector.reputation}">
+																	<f:selectItem itemLabel="BONNE" itemValue="1" />
+																	<f:selectItem itemLabel="MAUVAISE" itemValue="2" />
+																</p:selectOneRadio>
+
+																
+															</h:panelGrid>
+														</center>
+														<p:commandButton action="#{affectationTypeEnterpriseSector.doAdd}"
+															value="AFFECTER" update="display"
+															oncomplete="dialog.show()" />
+
+
+														<p:dialog widgetVar="dialog" showEffect="fade"
+															hideEffect="fade" header="Global Information : " width="300" height="100">
+															
+															<h:panelGrid columns="2" id="display" cellpadding="5">
+																
+																<h:outputText value="lES ACTIONS: " />
+																<h:outputText value="#{affectationTypeEnterpriseSector.num}" />
+
+																<h:outputText value="ENTREPRISE: " />
+																<h:outputText value="#{affectationTypeEnterpriseSector.nameEnterprise}" />
+
+
+															</h:panelGrid>
+
+														</p:dialog>
+													</p:fieldset>
+												</p:panel>
+							                 </h:form>>
+							
+							</div>
+						</div>			
+					</div>
+				</div>			
+				
+				
+									
+            </ui:define>
+
+        </ui:composition>
+     
+
+</html>

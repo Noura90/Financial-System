@@ -1,0 +1,130 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+    
+        <ui:composition template="template44.xhtml">
+             <ui:define name="title4">
+            <h1> Cours des devises</h1>             </ui:define>
+             <ui:define name="title">
+              Cours des devises
+             </ui:define>
+             <ui:define name="minititle">
+             <h5> Cours des devises</h5>
+             </ui:define>
+
+
+            <ui:define name="content1">
+            <br></br>
+              
+<h:form rendered="#{authenticationController.loggedIn}">
+<h:messages layout="table" styleClass="form-error" showDetail="true" />
+	<h:dataTable class="table table-bordered table-striped table-hover data-table" border="0" rules="all" value="#{CurrencieController.currencies}"
+		var="currencie">
+		
+		
+		
+		<h:column>
+			<f:facet name="header">
+				<h:outputText value="DESIGNATION" />
+			</f:facet>
+			<h:outputText value="#{currencie.designation}" />
+		</h:column>
+
+		<h:column>
+			<f:facet name="header">
+				<h:outputText value="CODE" />
+			</f:facet>
+			<h:outputText value="#{currencie.currency}" />
+		</h:column>
+		
+		<h:column>
+			<f:facet name="header">
+				<h:outputText value="UNITE" />
+			</f:facet>
+			<h:outputText value="#{currencie.unity}" />
+		</h:column>
+		
+		<h:column>
+			<f:facet name="header">
+				<h:outputText value="ACHAT" />
+			</f:facet>
+			<h:outputText value="#{currencie.purchase}" />
+		</h:column>
+		
+		
+		<h:column>
+			<f:facet name="header">
+				<h:outputText value="VENTE" />
+			</f:facet>
+			<h:outputText value="#{currencie.sale}" />
+		</h:column>
+		
+		
+		
+		
+		
+		
+		
+</h:dataTable>
+
+</h:form>
+<h:form rendered="#{!authenticationController.loggedIn}">
+						<div class="alert alert-danger">
+							You should be logged in to get access to this area. Please Sign up
+							<h:commandLink
+								action="login2?faces-redirect=true"
+								value="here" />
+						</div>
+					</h:form>
+					
+						<h:form id="jsfexample">
+      
+        <p:dataTable value="#{manager.returnCacheListAllCurrencie()}" var="item" id="mydata" rendered="false">
+            <p:column>
+                <f:facet name="header">DESIGNATION</f:facet>
+                <h:outputText value="#{item.designation}" />
+            </p:column>
+            <p:column>
+                <f:facet name="header">CURRENCY</f:facet>
+                <h:outputText value="#{item.currency}" />
+            </p:column>
+            <p:column>
+                <f:facet name="header">UNITY</f:facet>
+                <h:outputText value="#{item.unity}" />
+            </p:column>
+             <p:column>
+                <f:facet name="header">PURCHASE</f:facet>
+                <h:outputText value="#{item.purchase}" />
+            </p:column>
+             <p:column>
+                <f:facet name="header">SALE</f:facet>
+                <h:outputText value="#{item.sale}" />
+            </p:column>
+             
+           
+        </p:dataTable>
+        <p:panel >
+            <h:commandLink>
+                <p:graphicImage value="../resources/img/excel_icon.png"  width="100" height="100"/>
+                <p:dataExporter type="xls" postProcessor="#{manager.postProcessXLS}"
+                    target="mydata" fileName="myexcel" />
+            </h:commandLink>
+            <h:commandLink>
+                <p:graphicImage value="../resources/img/NoP_PDF_downlaod.png"  width="100" height="100"/>
+                <p:dataExporter type="pdf" target="mydata" fileName="mypdf" />
+            </h:commandLink>
+        </p:panel>
+
+    </h:form>
+					
+					
+            </ui:define>
+
+        </ui:composition>
+
+</html>

@@ -1,0 +1,126 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+
+    <h:body>
+        <ui:composition template="template2.xhtml">
+<ui:define name="title4">
+            <h1> Les Obligations</h1>             </ui:define>
+             <ui:define name="title">
+             Les Obligations
+             </ui:define>
+             <ui:define name="minititle">
+             <h5>Les Obligations</h5>
+             </ui:define>
+
+
+            <ui:define name="content1">
+            <br></br>
+    <h:form rendered="#{!authenticationController.loggedIn}">
+						<div class="alert alert-danger">
+							You should be logged in to get access to this area. Please Sign up
+							<h:commandLink
+								action="login2?faces-redirect=true"
+								value="here" />
+						</div>
+					</h:form>          
+<h:form rendered="#{authenticationController.loggedIn}">
+<h:messages layout="table" styleClass="form-error"
+								showDetail="true" />
+	<h:dataTable class="table table-bordered table-striped table-hover data-table" border="0" rules="all" value="#{TbondController.bonds}"
+		var="bond">
+		<h:column>
+			<f:facet name="header">
+				<h:outputText value="photo of bond" />
+			</f:facet>
+								<img src="../resources/UploadedImages/#{service.imageLink}" width="100" height="100"></img>
+		</h:column>
+		<h:column>
+			<f:facet name="header">
+				<h:outputText value="type of bond" />
+			</f:facet>
+			<h:outputText value="#{bond.typeBond}" />
+		</h:column>
+		<h:column>
+			<f:facet name="header">
+				<h:outputText value="description of bond" />
+			</f:facet>
+			<h:outputText value="#{bond.description}" />
+		</h:column>
+		<h:column>
+			<f:facet name="header">
+				<h:outputText value="number of capital" />
+			</f:facet>
+			<h:outputText value="#{bond.nombreCapital}" />
+		</h:column>
+			<h:column>
+			<f:facet name="header">
+				<h:outputText value="Type Of delevery" />
+			</f:facet>
+			<h:outputText value="#{bond.deleveryType}" />
+		   </h:column>
+			<h:column>
+			<f:facet name="header">
+			<h:outputText value="State of Bond" />
+			</f:facet>
+			<h:outputText value="#{bond.stateBond}" />
+		    </h:column>
+		
+		<h:column>
+		
+		<f:facet name="header">
+								Actions
+		</f:facet>
+		
+											<h:commandLink
+												action="#{TbondController.addTransaction()}"
+												value="buy">
+												<f:setPropertyActionListener
+													target="#{TbondController.bond}" value="#{bond}" />
+											</h:commandLink>
+</h:column>	
+</h:dataTable>
+</h:form>
+
+<h:form id="jsfexample">
+      
+        <p:dataTable value="#{manager.returnCacheListAllBonds()}" var="item" id="mydata" rendered="false">
+            <p:column>
+                <f:facet name="header">Type Bond</f:facet>
+                <h:outputText value="#{item.typeBond}" />
+            </p:column>
+            <p:column>
+                <f:facet name="header">Description</f:facet>
+                <h:outputText value="#{item.description}" />
+            </p:column>
+            <p:column>
+                <f:facet name="header">Capitals Number</f:facet>
+                <h:outputText value="#{item.nombreCapital}" />
+            </p:column>
+           
+        </p:dataTable>
+        <p:panel >
+            <h:commandLink>
+                <p:graphicImage value="../resources/img/excel_icon.png"  width="100" height="100"/>
+                <p:dataExporter type="xls" postProcessor="#{manager.postProcessXLS}"
+                    target="mydata" fileName="myexcel" />
+            </h:commandLink>
+            <h:commandLink>
+                <p:graphicImage value="../resources/img/NoP_PDF_downlaod.png"  width="100" height="100"/>
+                <p:dataExporter type="pdf" target="mydata" fileName="mypdf" />
+            </h:commandLink>
+        </p:panel>
+
+    </h:form>
+
+
+            </ui:define>
+
+        </ui:composition>
+    </h:body>
+</html>

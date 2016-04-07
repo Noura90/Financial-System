@@ -1,0 +1,17 @@
+com.esprit.entity
+com.esprit.service.affectationTypeSectorEnterprise
+com.esprit.service.gestionEnterprise
+com.esprit.service.gestionSector
+com.esprit.service.gestionTypeSector
+com.estrading.entity
+com.estrading.exception
+com.estrading.service
+com.log
+com.mkyong.common
+controller
+controllermarket
+org.primefaces.beans.affectation
+org.primefaces.beans.gestionEnter
+org.primefaces.beans.gestionSector
+tn.esprit.estrading.controller
+tn.esprit.estrading.controller.admin

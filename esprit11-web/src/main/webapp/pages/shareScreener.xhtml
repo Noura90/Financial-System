@@ -1,0 +1,86 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+    
+        <ui:composition template="template6.xhtml">
+             <ui:define name="title4">
+            <h1> Graphe Des Actions</h1>             </ui:define>
+             <ui:define name="title">
+              Graphe Des Actions
+             </ui:define>
+             <ui:define name="minititle">
+             <h5> Graphe Des Actions</h5>
+             </ui:define>
+
+
+            <ui:define name="content1">
+            <br></br>
+              
+<h:form rendered="#{authenticationController.loggedIn}">
+<h:messages layout="table" styleClass="form-error" showDetail="true" />
+	
+
+</h:form>
+<h:form rendered="#{!authenticationController.loggedIn}">
+						<div class="alert alert-danger">
+							You should be logged in to get access to this area. Please Sign up
+							<h:commandLink
+								action="login2?faces-redirect=true"
+								value="here" />
+						</div>
+					</h:form>
+					
+						<h:form id="jsfexample">
+      
+        <p:dataTable value="#{manager.returnCacheListAllCurrencie()}" var="item" id="mydata" rendered="false">
+            <p:column>
+                <f:facet name="header">currency</f:facet>
+                <h:outputText value="#{item.currency}" />
+            </p:column>
+            <p:column>
+                <f:facet name="header">eur</f:facet>
+                <h:outputText value="#{item.eur}" />
+            </p:column>
+            <p:column>
+                <f:facet name="header">gbp</f:facet>
+                <h:outputText value="#{item.gbp}" />
+            </p:column>
+             <p:column>
+                <f:facet name="header">jpy</f:facet>
+                <h:outputText value="#{item.jpy}" />
+            </p:column>
+             <p:column>
+                <f:facet name="header">tnd</f:facet>
+                <h:outputText value="#{item.tnd}" />
+            </p:column>
+              <p:column>
+                <f:facet name="header">usd</f:facet>
+                <h:outputText value="#{item.usd}" />
+            </p:column>
+           
+        </p:dataTable>
+        <p:panel >
+            <h:commandLink>
+                <p:graphicImage value="../resources/img/excel_icon.png"  width="100" height="100"/>
+                <p:dataExporter type="xls" postProcessor="#{manager.postProcessXLS}"
+                    target="mydata" fileName="myexcel" />
+            </h:commandLink>
+            <h:commandLink>
+                <p:graphicImage value="../resources/img/NoP_PDF_downlaod.png"  width="100" height="100"/>
+                <p:dataExporter type="pdf" target="mydata" fileName="mypdf" />
+            </h:commandLink>
+        </p:panel>
+
+    </h:form>
+					
+					
+            </ui:define>
+
+        </ui:composition>
+
+</html>

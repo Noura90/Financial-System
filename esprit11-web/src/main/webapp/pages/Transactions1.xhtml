@@ -1,0 +1,65 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:h="http://java.sun.com/jsf/html" xmlns:c="http://java.sun.com/jsp/jstl/core"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <h:body>
+        <ui:composition template="template33Admin.xhtml">
+             <ui:define name="title4">
+            <h1> Les Transactions</h1>             </ui:define>
+             <ui:define name="title">
+            Les Transactions
+             </ui:define>
+             <ui:define name="minititle">
+             <h5>Les Transactions</h5>
+             </ui:define>
+
+
+            <ui:define name="content1">
+            <br></br>
+             
+              
+<h:form rendered="#{authenticationControllerAdmin.isLoggedIn()}">
+	<h:dataTable class="table table-bordered table-striped table-hover data-table" border="0" rules="all" value="#{TransactionPortfolioController.transactions}"
+		var="transactionPortfolio">
+		<h:column>
+			<f:facet name="header">
+				<h:outputText value="NOM" />
+			</f:facet>
+			<h:outputText value="#{transactionPortfolio.name}" />
+		</h:column>
+		<h:column>
+			<f:facet name="header">
+				<h:outputText value="TYPE" />
+			</f:facet>
+			<h:outputText value="#{transactionPortfolio.typeTrans}" />
+		</h:column>
+		<h:column>
+			<f:facet name="header">
+				<h:outputText value="DATE DE TRANSACTION" />
+			</f:facet>
+			<h:outputText value="#{transactionPortfolio.dateTransaction}" />
+		</h:column>
+		<h:column>
+		<f:facet name="header">
+								SUPPRIMER
+		</f:facet>
+		
+		<h:commandLink
+												action="#{TransactionPortfolioController.doDeleteTransaction()}"
+												value="SUPPRIMER">
+												<f:setPropertyActionListener
+													target="#{TransactionPortfolioController.transaction}" value="#{transactionPortfolio}" />
+											</h:commandLink>
+</h:column>	
+		
+		
+	
+</h:dataTable>
+</h:form>
+            </ui:define>
+
+        </ui:composition>
+    </h:body>
+</html>

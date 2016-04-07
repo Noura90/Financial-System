@@ -1,0 +1,98 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:h="http://java.sun.com/jsf/html" xmlns:c="http://java.sun.com/jsp/jstl/core"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <h:body>
+        <ui:composition template="template3.xhtml">
+             <ui:define name="title4">
+            <h1> Portefeuille</h1>             </ui:define>
+             <ui:define name="title">
+             Portefeuille
+             </ui:define>
+             <ui:define name="minititle">
+             <h5>Portefeuille</h5>
+             </ui:define>
+
+
+            <ui:define name="content1">
+            <br></br>
+             <h:form rendered="#{!authenticationController.isLoggedIn()}">
+						<div class="alert alert-danger">
+							You should be logged in to get access to this area. Please Sign up
+							<h:commandLink
+								action="login2?faces-redirect=true"
+								value="here" />
+						</div>
+					</h:form>
+              
+<h:form rendered="#{authenticationController.isLoggedIn()}">
+	<h:dataTable class="table table-bordered table-striped table-hover data-table" border="0" rules="all" value="#{TransactionController.transactionCustomers}"
+		var="transactionCustomer">
+		<h:column>
+			<f:facet name="header">
+				<h:outputText value="NOM" />
+			</f:facet>
+			<h:outputText value="#{transactionCustomer.shareName}" />
+		</h:column>
+		<h:column>
+			<f:facet name="header">
+				<h:outputText value="VRIATION" />
+			</f:facet>
+			<h:outputText value="#{transactionCustomer.variation}" />
+		</h:column>
+		<h:column>
+			<f:facet name="header">
+				<h:outputText value="DATE" />
+			</f:facet>
+			<h:outputText value="#{transactionCustomer.dateTransactionCus}" />
+		</h:column>
+		<h:column>
+			<f:facet name="header">
+				<h:outputText value="VOLUME(TITRES)" />
+			</f:facet>
+			<h:outputText value="#{transactionCustomer.volumeValues}" />
+		</h:column>
+		
+		<h:column>
+			<f:facet name="header">
+				<h:outputText value="VOLUME(DT)" />
+			</f:facet>
+			<h:outputText value="#{transactionCustomer.volumeDT}" />
+		</h:column>
+		<h:column>
+		<f:facet name="header">
+								VENDRE
+		</f:facet>
+		
+		<h:commandLink
+												action="#{TransactionController.doDeleteTransaction1()}"
+												value="VENDRE">
+												<f:setPropertyActionListener
+													target="#{TransactionController.transactionCustomer}" value="#{transactionCustomer}" />
+											</h:commandLink>
+</h:column>	
+
+
+
+
+</h:dataTable>
+	<br />
+					
+<br />
+           	<br />
+                      <h:outputText value="Mon Capital : " />
+			<h:outputText  type="text" name="Your Capital"  value="#{TransactionController.iscust().nbre_capital_P}" />
+											<br /><br />
+						<h:outputText value="Liquidité : " />
+<h:outputText  type="text" name="Liquidité"  value="#{TransactionController.iscust().liquidity}" />
+       
+
+
+</h:form>
+            </ui:define>
+
+        </ui:composition>
+    </h:body>
+</html>
